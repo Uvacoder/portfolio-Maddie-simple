@@ -1,0 +1,214 @@
+@import "./utils/normalize.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+$size-m: 1rem;
+$size-l: 1.5rem;
+$size-xl: 2rem;
+
+$brand-01: #ffd166;
+$ui-01: #111;
+$text-01: #111;
+$text-02: #fefefe;
+
+$transition-time: 250ms;
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  padding: $size-m 5%;
+  margin: 0 auto;
+  max-width: 1000px;
+  color: $ui-01;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    padding: $size-xl $size-m;
+    align-items: flex-start;
+
+    p {
+      line-height: 1.5;
+    }
+  }
+}
+
+.link {
+  transition: all $transition-time;
+  font-weight: 700;
+  color: $text-01;
+  background-position: -100%;
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    transparent 50%,
+    $brand-01 50%,
+    $brand-01
+  );
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+
+  &:visited {
+    color: $text-01;
+  }
+
+  &:hover {
+    background-position: 0 0;
+  }
+}
+
+.button {
+  background-color: $brand-01;
+  border: 2px solid $text-01;
+  padding: 0 $size-m;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $size-m;
+  color: $text-01;
+  transition: all $transition-time;
+
+  svg {
+    margin-right: $size-m;
+    position: relative;
+    width: $size-l;
+    vertical-align: middle;
+    transition: all $transition-time;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($brand-01, 10%);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    height: 100%;
+  }
+}
+
+.title {
+  .name {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 4rem;
+    margin-bottom: $size-xl;
+  }
+
+  .bio {
+    font-size: 1.25rem;
+  }
+
+  .location {
+    font-style: italic;
+    margin: $size-xl 0;
+  }
+
+  .button {
+    position: relative;
+
+    &:focus {
+      outline: none;
+      box-shadow: 2px 2px 2px 0 rgba(#333, 0.4);
+    }
+  }
+
+  .tooltip {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all $transition-time;
+    position: absolute;
+    background-color: $text-01;
+    color: $text-02;
+    padding: 0 $size-m;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    width: calc(100% + 4px);
+    transform: translateX(100%);
+    visibility: visible;
+    opacity: 1;
+
+    span {
+      white-space: nowrap;
+    }
+
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+  }
+}
+
+footer {
+  @media (max-width: 600px) {
+    margin-top: auto;
+  }
+}
+
+.social {
+  display: flex;
+  margin-top: $size-xl;
+  padding: 0;
+  position: relative;
+
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-right: $size-m;
+    transition: all $transition-time;
+    padding: 0.25rem;
+    border-radius: 100%;
+
+    a {
+      height: $size-l;
+      width: $size-l;
+      display: flex;
+      align-items: center;
+      border-radius: 100%;
+    }
+  }
+
+  svg {
+    fill: $ui-01;
+    width: 100%;
+  }
+}
+
+.box {
+  transition: all 150ms;
+  background-color: $brand-01;
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  height: $size-l;
+  width: $size-l;
+  border-radius: 100%;
+  pointer-events: none;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
